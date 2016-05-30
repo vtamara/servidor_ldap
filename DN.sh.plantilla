@@ -1,0 +1,41 @@
+#!/bin/sh
+# Datos de configuración y funciones útiles. 
+# Dominio público. vtamara@pasosdeJesus.org. 2005
+
+
+dn='dc=pasosdeJesus,dc=org';
+
+cn="cn=admin,$dn";
+
+grupo="ou=gente,$dn";
+
+serv='www.pasosdeJesus.org';
+
+dcorreo="pasosdeJesus.org";
+
+#host="ldaps://$serv:636";
+host="ldap://127.0.0.1";
+
+claveLDAP='lypnoazt';
+
+grupos='estudiante profesor apoyo';
+
+quota=0;
+# Quota en 0 significa que no se usan cuotas
+
+function die {
+	echo $1;
+	exit 1;
+}
+
+function esta {
+	aguja=$1;
+	pajar="$2";
+	esta=0;
+	for i in $pajar; do
+		if (test "$i" = "$aguja") then {
+			return 0;
+		} fi;
+	done;
+	die "$grupo no está en '$grupos'";
+}
