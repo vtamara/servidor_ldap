@@ -29,7 +29,7 @@ userPassword: $cclave
 echo $t
 cat $t
 #recode txt..UTF-8 $t
-cmd="ldapmodify -x -D \"$cn\" -w \"$claveLDAP\" -H $host -f $t"
+cmd="ldapmodify -x -D \"$cn\" -W -H $host -f $t"
 echo "$cmd"
 eval "$cmd"
 if (test "$?" != "0") then {

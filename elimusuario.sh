@@ -17,7 +17,7 @@ if (test -h /home/$usuario) then {
 	rm /home/$usuario
 } fi;
 
-ldapdelete -v -P 2 -H ldap://$serv:389 -w $claveLDAP \
+ldapdelete -v -P 2 -H ldap://$serv:389 -W \
   -D "cn=Manager,$dn" \
   -x  "uid=$usuario,ou=gente,$dn"
 

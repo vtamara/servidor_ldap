@@ -9,7 +9,7 @@ if (test ! -f "$ldif") then {
 	die "Falta archivo LDIF como primer parámetro";
 } fi;
 
-cmd="ldapadd -x -D \"$cn\" -w $claveLDAP -H $host -f $ldif"
+cmd="ldapadd -x -D \"$cn\" -W -H $host -f $ldif"
 echo $cmd
 eval $cmd
 if (test "$?" != "0") then {

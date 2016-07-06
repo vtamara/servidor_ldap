@@ -11,11 +11,11 @@ if (test "$n" = "")  then {
 	cmd="ldapsearch -x -b $dn '(objectclass=*)'"
 } 
 else {
-	cmd="ldapsearch -P 3 -H $host -w "$claveLDAP" \
+	cmd="ldapsearch -P 3 -H $host -W  \
   -D \"$cn\" \
   -x -b \"$grupo\" \
   \"(&(objectclass=posixAccount)(uid=$n))\"";
-	cmd="ldapsearch -P 3 -H $host -w "$claveLDAP" \
+	cmd="ldapsearch -P 3 -H $host -W  \
   -D \"$cn\" \
   -x -b \"$grupo\" \
   \"(&(objectclass=inetOrgPerson)(uid=$n))\"";

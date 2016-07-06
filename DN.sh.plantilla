@@ -16,8 +16,6 @@ dcorreo="pasosdeJesus.org";
 #host="ldaps://$serv:636";
 host="ldap://127.0.0.1";
 
-claveLDAP='lypnoazt';
-
 grupos='estudiante profesor apoyo';
 
 quota=0;
