@@ -6,17 +6,17 @@
 usuario="$1";
 nuevaclave="$2";
 if (test "$usuario" = "") then {
-	die "Falta usuario como primer parámetro";
+  die "Falta usuario como primer parámetro";
 } fi;
 
 if (test "$nuevaclave" = "") then {
-	echo -n "clave: ";
-	stty -echo; read nuevaclave; stty echo
+  echo -n "clave: ";
+  stty -echo; read nuevaclave; stty echo
 } fi;
 
 if (test "$nuevaclave" = "") then {
-	echo "Falta clave";
-	exit 1;
+  echo "Falta clave";
+  exit 1;
 } fi;
 
 t=`mktemp`;
@@ -33,5 +33,5 @@ cmd="ldapmodify -x -D \"$cn\" -W -H $host -f $t"
 echo "$cmd"
 eval "$cmd"
 if (test "$?" != "0") then {
-	die "Problema cambiando clave";
+  die "Problema cambiando clave";
 } fi;
