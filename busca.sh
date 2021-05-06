@@ -6,21 +6,26 @@
 
 n=$1;
 
+if (test "$tls" = "1") then {
+  iniord="ldapsearch -Z "
+} else {
+  iniord="ldapsearch "
+} fi;
 if (test "$n" = "")  then {
   echo "vaio"
-  cmd="ldapsearch -x -b $dn '(objectclass=*)'"
+  cmd="$iniord -x -b $dn '(objectclass=*)'"
 } 
 else {
-  cmd="ldapsearch -P 3 -H $host -W  \
-  -D \"$cn\" \
-  -x -b \"$grupo\" \
-  \"(&(objectclass=posixAccount)(uid=$n))\"";
-  cmd="ldapsearch -P 3 -H $host -W  \
-  -D \"$cn\" \
-  -x -b \"$grupo\" \
-  \"(&(objectclass=inetOrgPerson)(uid=$n))\"";
-
+  cmd="$iniord -P 3 -H $host -W  \
+    -D \"$cn\" \
+    -x -b \"$grupo\" \
+    \"(&(objectclass=posixAccount)(uid=$n))\"";
+  cmd="$iniord -P 3 -H $host -W  \
+    -D \"$cn\" \
+    -x -b \"$grupo\" \
+    \"(&(objectclass=inetOrgPerson)(uid=$n))\"";
 } fi;
+
 echo $cmd;
 eval $cmd;
 

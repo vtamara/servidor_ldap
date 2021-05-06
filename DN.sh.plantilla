@@ -14,7 +14,9 @@ serv='www.pasosdeJesus.org';
 dcorreo="pasosdeJesus.org";
 
 #host="ldaps://$serv:636";
-host="ldap://127.0.0.1";
+host="ldap://127.0.0.1:389";
+
+tls="1"
 
 grupos='estudiante profesor apoyo';
 
